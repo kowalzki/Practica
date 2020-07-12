@@ -73,12 +73,8 @@ public:
 		SetConsoleCP(1251);
 		SetConsoleOutputCP(1251);
 		setlocale(0, "");
-		bool flag = false;
-		//unsigned int empN = 0, posN = 0;
 		ios_base::left;
 		cout << setw(40) << "Ввод данных о сотрудниках" << endl;
-		//employees.push_back(Employ);
-		cout << "TYT" << endl;
 		cout << "Сотрудник №";
 		cin >> Employ.eploy_ind;
 		cin.ignore();
