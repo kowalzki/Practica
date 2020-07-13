@@ -1,3 +1,5 @@
+#ifndef EMPLOYEE_CLASS_H_
+#define EMPLOYEE_CLASS_H_
 #include <iostream>
 #include <iomanip>
 #include <string.h>
@@ -5,6 +7,8 @@
 #include <fstream>
 #include <Windows.h>
 #include "Employee.h"
+#include "Position.h"
+#include "Position_Class.h"
 using namespace std;
 
 class Employee_Class
@@ -12,28 +16,20 @@ class Employee_Class
 	// когда обрабатывать запросы - удалить
 	//все пробелы и в запросе и в структуре. К херам
 public:
-	//struct employee employees[10] = {};
-	//vector <employee> employees;
+	Position_Class posCl;
+	position Posit;
 	employee Employ;
 	string buffer = "";
-	//unsigned int empN = 0, posN = 0;
-	void Show()
-	{
-		ifstream fin;
-		fin.open("C:\\Pract\\Employee.txt", ios::in);
-		cout << left
-			<< setw(20) << "Номер сотрудника"
-			<< setw(36) << "ФИО"
-			<< setw(8) << "Возраст"
-			<< setw(5) << "Пол"
-			<< setw(39) << "Адрес"
-			<< setw(20) << "Телефон"
-			<< setw(15) << "Паспорт"
-			<< setw(10) << "Должность" << endl;
 
-		while (fin.peek()!=EOF)
+	void ShowE()
+	{
+		ifstream finE;
+		finE.open("C:\\Pract\\Employee.txt", ios::in);
+		system("cls");
+
+		while (finE.peek()!=EOF)
 		{
-			ReadFromFile(&fin);
+			ReadFromFileEC(&finE);
 
 			DeleteLastSps(Employ.eploy_ind);
 			DeleteLastSps(Employ.fio.name);
@@ -48,6 +44,16 @@ public:
 			DeleteLastSps(Employ.phone);
 			DeleteLastSps(Employ.passport);
 			DeleteLastSps(Employ.position_ind);
+
+			cout << left
+				<< setw(20) << "Номер сотрудника"
+				<< setw(36) << "ФИО"
+				<< setw(8) << "Возраст"
+				<< setw(5) << "Пол"
+				<< setw(39) << "Адрес"
+				<< setw(20) << "Телефон"
+				<< setw(15) << "Паспорт"
+				<< setw(10) << "Должность" << endl;
 			
 			cout << left 
 				<< setw(20) << Employ.eploy_ind 
@@ -63,12 +69,16 @@ public:
 				<< setw(20)	<< Employ.phone 
 				<< setw(15) << Employ.passport 
 				<< setw(10)  << Employ.position_ind << endl;
+
+			cout << "Дополнительная информация: " << endl;
+
+			posCl.RFFSearch(Employ.position_ind);			
 		}
-		fin.close();
+		finE.close();
 		system("pause");
 	}
 
-	void AddElem()
+	void AddElemEC()
 	{
 		SetConsoleCP(1251);
 		SetConsoleOutputCP(1251);
@@ -127,18 +137,15 @@ public:
 		cin.ignore();
 		
 		cout << "Запись окончена.";
-		Sleep(2000);
+		Sleep(1000);
 		system("cls");
 	}
 
-	void AddToFile()
+	void AddToFileEC()
 	{
 		ofstream fout;
 		fout.open("C:\\Pract\\Employee.txt", ios::app);
 		ios_base::left;
-
-		/*cout << endl << employees.at(0).phone << endl;
-		cout << endl << employees.size() << endl;*/
 
 		if (fout.is_open())
 		{
@@ -173,78 +180,72 @@ public:
 		fout.close();
 	}
 
-	void ReadFromFile(ifstream *fin)
+	void ReadFromFileEC(ifstream* fin)
 	{
-			//getline(fin, buffer);
-		/*while (fin->peek() != '\n' && !fin->eof()) // +setw
-		{*/
-			//fin.seekg(20, ios_base::beg);
-	/*	while (!fin->eof())
-		{*/
-		 /*if (!fin->eof())
-		{*/
+		for (int i = 0; i < 5; i++)
+			buffer += fin->get();
+		Employ.eploy_ind = buffer; buffer = "";
 
-			for (int i = 0; i < 5; i++)
-				buffer += fin->get();
-			Employ.eploy_ind = buffer; buffer = "";
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.name = buffer; buffer = "";
 
-			for (int i = 0; i < 12; i++)
-				buffer += fin->get();
-			Employ.fio.name = buffer; buffer = "";
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.sec_name = buffer; buffer = "";
 
-			for (int i = 0; i < 12; i++)
-				buffer += fin->get();
-			Employ.fio.sec_name = buffer; buffer = "";
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.surname = buffer; buffer = "";
 
-			for (int i = 0; i < 12; i++)
-				buffer += fin->get();
-			Employ.fio.surname = buffer; buffer = "";
+		for (int i = 0; i < 5; i++)
+			buffer += fin->get();
+		Employ.age = buffer; buffer = "";
 
-			for (int i = 0; i < 5; i++)
-				buffer += fin->get();
-			Employ.age = buffer; buffer = "";
+		for (int i = 0; i < 3; i++)
+			buffer += fin->get();
+		Employ.sex = buffer; buffer = "";
 
-			for (int i = 0; i < 3; i++)
-				buffer += fin->get();
-			Employ.sex = buffer; buffer = "";
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.e_adress.city = buffer; buffer = "";
 
-			for (int i = 0; i < 15; i++)
-				buffer += fin->get();
-			Employ.e_adress.city = buffer; buffer = "";
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.e_adress.street_name = buffer; buffer = "";
 
-			for (int i = 0; i < 15; i++)
-				buffer += fin->get();
-			Employ.e_adress.street_name = buffer; buffer = "";
+		for (int i = 0; i < 4; i++)
+			buffer += fin->get();
+		Employ.e_adress.house = buffer; buffer = "";
 
-			for (int i = 0; i < 4; i++)
-				buffer += fin->get();
-			Employ.e_adress.house = buffer; buffer = "";
+		for (int i = 0; i < 4; i++)
+			buffer += fin->get();
+		Employ.e_adress.flat = buffer; buffer = "";
 
-			for (int i = 0; i < 4; i++)
-				buffer += fin->get();
-			Employ.e_adress.flat = buffer; buffer = "";
+		for (int i = 0; i < 20; i++)
+			buffer += fin->get();
+		Employ.phone = buffer; buffer = "";
 
-			for (int i = 0; i < 20; i++)
-				buffer += fin->get();
-			Employ.phone = buffer; buffer = "";
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.passport = buffer; buffer = "";
 
-			for (int i = 0; i < 15; i++)
-				buffer += fin->get();
-			Employ.passport = buffer; buffer = "";
+		for (int i = 0; i <= 5; i++)
+			buffer += fin->get();
+		Employ.position_ind = buffer; buffer = "";
 
-			for (int i = 0; i <= 5; i++)
-				buffer += fin->get();
-			Employ.position_ind = buffer; buffer = "";
-			/*}*/
-		/*}*/
+	}
+
+	void RFFSearch()
+	{
+
 	}
 
 	void DeleteLastSps(string &str)
 	{
 		int i;
 		i = str.length() - 1;
-		//cout << i;
-		while (str[i] == ' ')
+		while (str[i] == ' ' || str[i] == '\n')
 		{
 			str.pop_back();
 			i--;
@@ -263,3 +264,5 @@ public:
 	}
 
 };
+
+#endif

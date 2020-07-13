@@ -5,9 +5,9 @@ using namespace std;
 
 struct position
 {
-	int position_ind; // должность
+	string position_ind; // должность
 	string pos_name;
-	int salary;
+	string salary;
 	string responsibility;
 	string expectations;
 };
