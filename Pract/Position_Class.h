@@ -53,7 +53,6 @@ public:
 
 		if (fout.is_open())
 		{
-			cout << endl << "Ok" << endl;
 			/*fout << left << setw(20)
 				<< "Номер сотрудника" << setw(36)
 				<< "ФИО" << setw(5)
