@@ -7,6 +7,7 @@
 #include <fstream>
 #include <Windows.h>
 #include "Position.h"
+#include "Employee.h"
 using namespace std;
 
 class Position_Class
@@ -14,6 +15,7 @@ class Position_Class
 
 public:
 	position Posit;
+	employee Employ;
 	string buffer = "";
 
 	void AddElemPC()
@@ -53,15 +55,6 @@ public:
 
 		if (fout.is_open())
 		{
-			/*fout << left << setw(20)
-				<< "Номер сотрудника" << setw(36)
-				<< "ФИО" << setw(5)
-				<< "Возраст" << setw(3)
-				<< "Пол" << setw(39)
-				<< "Адрес" << setw(20)
-				<< "Телефон" << setw(15)
-				<< "Паспорт" << setw(10)
-				<< "Должность" << endl;*/
 			fout << left
 				<< setw(5) << Posit.position_ind
 				<< setw(25) << Posit.pos_name
@@ -98,12 +91,73 @@ public:
 		Posit.expectations = buffer; buffer = "";
 	}
 
+	void SearchEmp()
+	{
+		ifstream finE;
+		finE.open("C:\\Pract\\Employee.txt", ios::in);
+		string serchr = "";
+		cout << "Введите искомую должность: ";
+		cin.ignore();
+		getline(cin, serchr);
+		cout << endl;
+		RFFSearch(serchr);
+		serchr = Posit.position_ind;
+
+		while (finE.peek() != EOF)
+		{
+			ReadFromFileEC(&finE);
+
+			DeleteLastSps(serchr);
+			DeleteLastSps(Employ.eploy_ind);
+			DeleteLastSps(Employ.fio.name);
+			DeleteLastSps(Employ.fio.sec_name);
+			DeleteLastSps(Employ.fio.surname);
+			DeleteLastSps(Employ.age);
+			DeleteLastSps(Employ.e_adress.city);
+			DeleteLastSps(Employ.e_adress.street_name);
+			DeleteLastSps(Employ.e_adress.house);
+			DeleteLastSps(Employ.e_adress.flat);
+			DeleteLastSps(Employ.sex);
+			DeleteLastSps(Employ.phone);
+			DeleteLastSps(Employ.passport);
+			DeleteLastSps(Employ.position_ind);
+
+			if (serchr == Employ.position_ind)
+			{
+				cout << left
+					<< setw(20) << "Номер сотрудника"
+					<< setw(36) << "ФИО"
+					<< setw(8) << "Возраст"
+					<< setw(5) << "Пол"
+					<< setw(39) << "Адрес"
+					<< setw(20) << "Телефон"
+					<< setw(15) << "Паспорт"
+					<< setw(10) << "Должность" << endl;
+
+				cout << left
+					<< setw(20) << Employ.eploy_ind
+					<< setw(12) << Employ.fio.name
+					<< setw(12) << Employ.fio.sec_name
+					<< setw(12) << Employ.fio.surname
+					<< setw(8) << Employ.age
+					<< setw(5) << Employ.sex
+					<< setw(15) << Employ.e_adress.city
+					<< setw(15) << Employ.e_adress.street_name
+					<< setw(4) << Employ.e_adress.house << '/'
+					<< setw(4) << Employ.e_adress.flat
+					<< setw(20) << Employ.phone
+					<< setw(15) << Employ.passport
+					<< setw(10) << Employ.position_ind << endl;
+			}
+		}
+	}
+
 	void RFFSearch(string str)
 	{
 		ifstream fin;
 		fin.open("C:\\Pract\\Position.txt", ios::in);
 
-		while (str != Posit.position_ind)
+		while (str != Posit.position_ind || str != Posit.pos_name)
 		{
 			ReadFromFilePC(&fin);
 			DeleteLastSps(str);
@@ -113,7 +167,7 @@ public:
 			DeleteLastSps(Posit.responsibility);
 			DeleteLastSps(Posit.expectations);
 
-			if (str == Posit.position_ind)
+			if (str == Posit.position_ind || str == Posit.pos_name)
 			{
 				cout << left
 					<< setw(15) << "Код должности"
@@ -129,6 +183,8 @@ public:
 					<< setw(50) << Posit.responsibility
 					<< setw(50) << Posit.expectations << endl << endl;
 			}
+			if (fin.peek() == EOF)
+				break;
 		}
 	}
 
@@ -152,6 +208,62 @@ public:
 				i--;
 			}
 		}
+	}
+
+	void ReadFromFileEC(ifstream* fin)
+	{
+		for (int i = 0; i < 5; i++)
+			buffer += fin->get();
+		Employ.eploy_ind = buffer; buffer = "";
+
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.name = buffer; buffer = "";
+
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.sec_name = buffer; buffer = "";
+
+		for (int i = 0; i < 12; i++)
+			buffer += fin->get();
+		Employ.fio.surname = buffer; buffer = "";
+
+		for (int i = 0; i < 5; i++)
+			buffer += fin->get();
+		Employ.age = buffer; buffer = "";
+
+		for (int i = 0; i < 3; i++)
+			buffer += fin->get();
+		Employ.sex = buffer; buffer = "";
+
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.e_adress.city = buffer; buffer = "";
+
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.e_adress.street_name = buffer; buffer = "";
+
+		for (int i = 0; i < 4; i++)
+			buffer += fin->get();
+		Employ.e_adress.house = buffer; buffer = "";
+
+		for (int i = 0; i < 4; i++)
+			buffer += fin->get();
+		Employ.e_adress.flat = buffer; buffer = "";
+
+		for (int i = 0; i < 20; i++)
+			buffer += fin->get();
+		Employ.phone = buffer; buffer = "";
+
+		for (int i = 0; i < 15; i++)
+			buffer += fin->get();
+		Employ.passport = buffer; buffer = "";
+
+		for (int i = 0; i <= 5; i++)
+			buffer += fin->get();
+		Employ.position_ind = buffer; buffer = "";
+
 	}
 
 };

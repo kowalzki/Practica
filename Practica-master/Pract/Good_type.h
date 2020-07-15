@@ -5,7 +5,7 @@ using namespace std;
 
 struct good_type
 {
-	string type_ind; // код типа
+	int type_ind; // код типа
 	string name;
 	string description;
 	string features; //особенности

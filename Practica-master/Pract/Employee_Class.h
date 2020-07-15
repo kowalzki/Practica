@@ -149,6 +149,15 @@ public:
 
 		if (fout.is_open())
 		{
+			/*fout << left << setw(20) 
+				<< "Номер сотрудника" << setw(36) 
+				<< "ФИО" << setw(5) 
+				<< "Возраст" << setw(3) 
+				<< "Пол" << setw(39)
+				<< "Адрес" << setw(20) 
+				<< "Телефон" << setw(15)
+				<< "Паспорт" << setw(10) 
+				<< "Должность" << endl;*/
 			fout << left 
 				<< setw(5)  << Employ.eploy_ind
 				<< setw(12)	<< Employ.fio.name 

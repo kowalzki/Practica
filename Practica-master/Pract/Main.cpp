@@ -5,7 +5,6 @@
 #include <Windows.h>
 #include "Employee_Class.h"
 #include "Position_Class.h"
-#include "Good_Class.h"
 using namespace std;
 
 int main()
@@ -20,7 +19,6 @@ int main()
 	Employee_Class emplC;
 	position posit;
 	Position_Class posC;
-	Good_Class gdCl;
 	cout << "Приветствую вас в БД оптового склада :)" << endl;
 	Sleep(1000);
 
@@ -34,7 +32,6 @@ int main()
 		cout << "3: Показать файл на экране" << endl;
 		cout << "4: Отдел кадров" << endl;
 		cout << "0: Выйти" << endl;
-		cout << "Chk" << endl;
 		cout << "_____________________" << endl << endl;
 		cout << "Выберите (__): ";
 		cin >> choice;
@@ -46,17 +43,12 @@ int main()
 		case 1:
 		{
 			system("cls");
-			cout << "1: Сотрудник" << endl;
-			cout << "2: Должность" << endl;
-			cout << "3: Товар" << endl;
-			cout << "_____________________" << endl << endl;
-			cout << "Выберите (__): ";
+			cout << "Сотрудник/Должность? (1/2): ";
 			cin >> chs;
 			switch (chs)
 			{
 			case 1: emplC.AddToFileEC(); system("pause"); break;
 			case 2: posC.AddToFilePC(); system("pause"); break;
-			case 3: gdCl.AddToFileGC(); system("pause"); break;
 			}
 			break;
 		}
@@ -64,17 +56,12 @@ int main()
 		case 2:
 		{
 			system("cls");
-			cout << "1: Сотрудник" << endl;
-			cout << "2: Должность" << endl;
-			cout << "3: Товар" << endl;
-			cout << "_____________________" << endl << endl;
-			cout << "Выберите (__): ";
+			cout << "Сотрудник/Должность? (1/2): ";
 			cin >> chs;
 			switch (chs)
 			{
 			case 1: emplC.AddElemEC(); system("pause"); break;
 			case 2: posC.AddElemPC(); system("pause"); break;
-			case 3: gdCl.AddElemGC(); system("pause"); break;
 			}
 			break;
 		}
@@ -86,13 +73,7 @@ int main()
 			cout << "Вывести всех сотрудников или поиск по должности? (1/0): ";
 			cin >> flag2;
 			if (flag2)
-			{
 				emplC.ShowE(); system("pause"); break;
-			}
-			else
-			{
-				posC.SearchEmp(); system("pause"); break;
-			}
 
 			break;
 		}

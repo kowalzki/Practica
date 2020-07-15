@@ -5,13 +5,13 @@ using namespace std;
 
 struct good
 {
-	string good_ind; // код товара
-	string type_ind; // код типа
+	int good_ind; // код товара
+	int type_ind; // код типа
 	string prod; //производитель
 	string name;
 	string hold_condit; // условия хранения
 	string package; // упаковка
-	string exp_date; //cpok годности 
+	int exp_date; //cpok годности 
 };
 
 #endif // !GOOD_H
