@@ -7,6 +7,7 @@
 #include "Position_Class.h"
 #include "Good_Class.h"
 #include "Good_type_Class.h"
+#include "Dealer_Class.h"
 using namespace std;
 
 int main()
@@ -23,6 +24,7 @@ int main()
 	Position_Class posC;
 	Good_Class gdCl;
 	Good_Type_Class gotCl;
+	Dealer_Class delCl;
 	cout << "Приветствую вас в БД оптового склада :)" << endl;
 	Sleep(1000);
 
@@ -36,6 +38,7 @@ int main()
 		cout << "3: Показать файл на экране" << endl;
 		cout << "4: Отдел кадров" << endl;
 		cout << "5: Список товаров" << endl;
+		cout << "6: Заказы" << endl;
 		cout << "0: Выйти" << endl;
 		cout << "Chk" << endl;
 		cout << "_____________________" << endl << endl;
@@ -53,6 +56,7 @@ int main()
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
 			cout << "4: Тип товара" << endl;
+			cout << "5: Поставщик" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -62,6 +66,7 @@ int main()
 			case 2: posC.AddToFilePC(); system("pause"); break;
 			case 3: gdCl.AddToFileGC(); system("pause"); break;
 			case 4: gotCl.AddToFileGTC(); system("pause"); break;
+			case 5: delCl.AddToFileDC(); system("pause"); break;
 			}
 			break;
 		}
@@ -73,6 +78,7 @@ int main()
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
 			cout << "4: Тип товара" << endl;
+			cout << "5: Поставщик" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -82,6 +88,7 @@ int main()
 			case 2: posC.AddElemPC(); system("pause"); break;
 			case 3: gdCl.AddElemGC(); system("pause"); break;
 			case 4: gotCl.AddElemGTC(); system("pause"); break;
+			case 5: delCl.AddElemGC(); system("pause"); break;
 			}
 			break;
 		}
@@ -116,6 +123,20 @@ int main()
 				gotCl.SearchGds(); system("pause"); break;
 			}
 			break;
+		}
+		case 6:
+		{
+			cout << "По полю -Поставщики- или -Заказчики- ? (1/0): ";
+			cin >> flag2;
+			if (flag2)
+			{
+				cout << "Вывести всех поставщиков или поиск по конкретному? (1/0): ";
+				cin >> flag2;
+				if (flag2)
+				{
+					delCl.ShowD(); system("pause"); break;
+				}
+			}
 		}
 		default: cout << "Повторите ввод. " << endl; system("pause"); break;
 		}

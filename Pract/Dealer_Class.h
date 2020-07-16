@@ -23,7 +23,7 @@ public:
 		ios_base::left;
 		cout << setw(40) << "Ввод данных о поставщиках" << endl;
 
-		cout << "Индекс поставщика: ";
+		cout << "Код поставщика: ";
 		cin >> Dlr.dealer_ind;
 		cin.ignore();
 	
@@ -95,7 +95,7 @@ public:
 				<< setw(20) << Dlr.name
 				<< setw(15) << Dlr.dlr_adr.city
 				<< setw(15) << Dlr.dlr_adr.street_name
-				<< setw(5) << Dlr.dlr_adr.house
+				<< setw(5) << Dlr.dlr_adr.house << '/'
 				<< setw(6) << Dlr.dlr_adr.flat
 				<< setw(15) << Dlr.del_good1
 				<< setw(15) << Dlr.del_good2
