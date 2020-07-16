@@ -8,6 +8,7 @@
 #include "Good_Class.h"
 #include "Good_type_Class.h"
 #include "Dealer_Class.h"
+#include "Orderer_Class.h"
 using namespace std;
 
 int main()
@@ -25,6 +26,7 @@ int main()
 	Good_Class gdCl;
 	Good_Type_Class gotCl;
 	Dealer_Class delCl;
+	Orderer_Class ordCl;
 	cout << "Приветствую вас в БД оптового склада :)" << endl;
 	Sleep(1000);
 
@@ -40,7 +42,6 @@ int main()
 		cout << "5: Список товаров" << endl;
 		cout << "6: Заказы" << endl;
 		cout << "0: Выйти" << endl;
-		cout << "Chk" << endl;
 		cout << "_____________________" << endl << endl;
 		cout << "Выберите (__): ";
 		cin >> choice;
@@ -52,11 +53,13 @@ int main()
 		case 1:
 		{
 			system("cls");
+			cout << "Сохранение в файл:" << endl;
 			cout << "1: Сотрудник" << endl;
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
 			cout << "4: Тип товара" << endl;
 			cout << "5: Поставщик" << endl;
+			cout << "6: Заказчик" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -67,6 +70,7 @@ int main()
 			case 3: gdCl.AddToFileGC(); system("pause"); break;
 			case 4: gotCl.AddToFileGTC(); system("pause"); break;
 			case 5: delCl.AddToFileDC(); system("pause"); break;
+			case 6: ordCl.AddToFileOC(); system("pause"); break;
 			}
 			break;
 		}
@@ -74,6 +78,7 @@ int main()
 		case 2:
 		{
 			system("cls");
+			cout << "Добавить элемент в:" << endl;
 			cout << "1: Сотрудник" << endl;
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
@@ -89,6 +94,7 @@ int main()
 			case 3: gdCl.AddElemGC(); system("pause"); break;
 			case 4: gotCl.AddElemGTC(); system("pause"); break;
 			case 5: delCl.AddElemGC(); system("pause"); break;
+			case 6: ordCl.AddElemOC(); system("pause"); break;
 			}
 			break;
 		}
