@@ -108,13 +108,14 @@ public:
 			goCl.RFFSearchG(Dlr.del_good2);
 			cout << "Информация по товару с индексом 3" << endl;
 			goCl.RFFSearchG(Dlr.del_good3);
+			cout << endl;
 		}
 	}
 
 	void RFFSearchD()
 	{
-		ifstream finE;
-		finE.open("C:\\Pract\\Dealer.txt", ios::in);
+		ifstream fin;
+		fin.open("C:\\Pract\\Dealer.txt", ios::in);
 		system("cls");
 		cout << "Введите наименование поставщика: ";
 		string srch = "";
@@ -124,7 +125,7 @@ public:
 
 		while (srch != Dlr.name)
 		{
-			ReadFromFileDC(&finE);
+			ReadFromFileDC(&fin);
 			DeleteLastSps(Dlr.dealer_ind);
 			DeleteLastSps(Dlr.name);
 			DeleteLastSps(Dlr.dlr_adr.city);
@@ -168,7 +169,7 @@ public:
 				goCl.RFFSearchG(Dlr.del_good3);
 				break;
 			}
-			if (finE.peek() == EOF)
+			if (fin.peek() == EOF)
 			{
 				cout << "Nope" << endl;
 				break;

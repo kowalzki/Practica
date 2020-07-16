@@ -118,8 +118,8 @@ public:
 
 	void SearchGds()
 	{
-		ifstream finE;
-		finE.open("C:\\Pract\\Good.txt", ios::in);
+		ifstream fin;
+		fin.open("C:\\Pract\\Good.txt", ios::in);
 		string serchr = "";
 		cout << "Введите искомый тип товаров: ";
 		cin.ignore();
@@ -130,9 +130,9 @@ public:
 		RFFSearchG(serchr);
 		serchr = Got.type_ind;
 
-		while (finE.peek() != EOF)
+		while (fin.peek() != EOF)
 		{
-			ReadFromFileGC(&finE);
+			ReadFromFileGC(&fin);
 			DeleteLastSps(Good.good_ind);
 			DeleteLastSps(Good.type_ind);
 			DeleteLastSps(Good.prod);
@@ -141,7 +141,7 @@ public:
 			DeleteLastSps(Good.package);
 			DeleteLastSps(Good.exp_date);
 
-			if (serchr == Got.type_ind)
+			if (serchr == Good.type_ind)
 			{
 				cout << left
 					<< setw(15) << "Код товара"
@@ -161,10 +161,10 @@ public:
 					<< setw(25) << Good.package
 					<< setw(15) << Good.exp_date << endl;
 			}
-			if (finE.peek() == EOF)
+			if (fin.peek() == EOF)
 				break;
 		}
-		finE.close();
+		fin.close();
 	}
 
 	void DeleteLastSps(string& str)
