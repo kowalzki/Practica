@@ -6,10 +6,12 @@
 #include <fstream>
 #include <Windows.h>
 #include "dealer.h"
+#include "Good_Class.h"
 
 class Dealer_Class
 {
 public:
+	Good_Class goCl;
 	dealer Dlr;
 	string buffer = "";
 	
@@ -77,6 +79,35 @@ public:
 			DeleteLastSps(Dlr.del_good2);
 			DeleteLastSps(Dlr.del_good3);
 
+			cout << left
+				<< setw(15) << "Код поставщика"
+				<< setw(20) << "Название поставщика"
+				<< setw(15) << "Город"
+				<< setw(15) << "Улица"
+				<< setw(5) << "Дом"
+				<< setw(6) << "Офис"
+				<< setw(15) << "Код товара 1"
+				<< setw(15) << "Код товара 2"
+				<< setw(15) << "Код товара 3" << endl;
+
+			cout << left
+				<< setw(15) << Dlr.dealer_ind
+				<< setw(20) << Dlr.name
+				<< setw(15) << Dlr.dlr_adr.city
+				<< setw(15) << Dlr.dlr_adr.street_name
+				<< setw(5) << Dlr.dlr_adr.house
+				<< setw(6) << Dlr.dlr_adr.flat
+				<< setw(15) << Dlr.del_good1
+				<< setw(15) << Dlr.del_good2
+				<< setw(15) << Dlr.del_good3 << endl;
+
+			cout << "Дополнительная информация:\n";
+			cout << "Информация по товару с индексом 1" << endl;
+			goCl.RFFSearchG(Dlr.del_good1);
+			cout << "Информация по товару с индексом 2" << endl;
+			goCl.RFFSearchG(Dlr.del_good2);
+			cout << "Информация по товару с индексом 3" << endl;
+			goCl.RFFSearchG(Dlr.del_good3);
 		}
 	}
 

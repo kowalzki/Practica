@@ -109,7 +109,7 @@ int main()
 			cin >> flag2;
 			if (flag2)
 			{
-				gdCl.ShowG(); system("pause"); break;
+				gdCl.ShowGF(); system("pause"); break;
 			}
 			else
 			{

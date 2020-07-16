@@ -24,7 +24,7 @@ public:
 		ios_base::left;
 		cout << setw(40) << "Ввод данных о типах товаров" << endl;
 
-		cout << "Индекс типа: ";
+		cout << "Код типа: ";
 		cin >> Got.type_ind;
 		cin.ignore();
 
@@ -99,7 +99,7 @@ public:
 			if (str == Got.type_ind || str == Got.name)
 			{
 				cout << left 
-					<< setw(15) << "Индекс типа"
+					<< setw(15) << "Код типа"
 					<< setw(25) << "Название типа"
 					<< setw(30) << "Описание"
 					<< setw(25) << "Особенности" << endl;
@@ -143,8 +143,8 @@ public:
 			if (serchr == Got.type_ind)
 			{
 				cout << left
-					<< setw(15) << "Индекс товара"
-					<< setw(15) << "Индекс типа"
+					<< setw(15) << "Код товара"
+					<< setw(15) << "Код типа"
 					<< setw(25) << "Производитель"
 					<< setw(25) << "Название товара"
 					<< setw(25) << "Условия хранения"

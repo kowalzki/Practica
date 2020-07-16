@@ -16,7 +16,7 @@ public:
 	string buffer = "";
 	Good_Type_Class gtC;
 
-	void ShowG()
+	void ShowGF()
 	{
 		ifstream finE;
 		finE.open("C:\\Pract\\Good.txt", ios::in);
@@ -34,8 +34,8 @@ public:
 			DeleteLastSps(Good.exp_date);
 
 			cout << left
-				<< setw(15) << "Индекс товара"
-				<< setw(15) << "Индекс типа"
+				<< setw(15) << "Код товара"
+				<< setw(15) << "Код типа"
 				<< setw(25) << "Производитель"
 				<< setw(25) << "Название товара"
 				<< setw(25) << "Условия хранения"
@@ -58,6 +58,48 @@ public:
 		system("pause");
 	}
 
+	void RFFSearchG(string str)
+	{
+		ifstream fin;
+		fin.open("C:\\Pract\\Good.txt", ios::in);
+
+		while (str != Good.type_ind)
+		{
+			ReadFromFileGC(&fin);
+			DeleteLastSps(str);
+			DeleteLastSps(Good.good_ind);
+			DeleteLastSps(Good.type_ind);
+			DeleteLastSps(Good.prod);
+			DeleteLastSps(Good.name);
+			DeleteLastSps(Good.hold_condit);
+			DeleteLastSps(Good.package);
+			DeleteLastSps(Good.exp_date);
+
+			if (str == Good.type_ind)
+			{
+				cout << left
+					<< setw(15) << "Код товара"
+					<< setw(15) << "Код типа"
+					<< setw(25) << "Производитель"
+					<< setw(25) << "Название товара"
+					<< setw(25) << "Условия хранения"
+					<< setw(25) << "Упаковка"
+					<< setw(15) << "Срок годности" << endl;
+
+				cout << left
+					<< setw(15) << Good.good_ind
+					<< setw(15) << Good.type_ind
+					<< setw(25) << Good.prod
+					<< setw(25) << Good.name
+					<< setw(25) << Good.hold_condit
+					<< setw(25) << Good.package
+					<< setw(15) << Good.exp_date << endl;
+			}
+			if (fin.peek() == EOF)
+				break;
+		}
+	}
+
 	void AddElemGC()
 	{
 		SetConsoleCP(1251);
@@ -66,11 +108,11 @@ public:
 		ios_base::left;
 		cout << setw(40) << "Ввод данных о товарах" << endl;
 
-		cout << "Индекс товара: ";
+		cout << "Код товара: ";
 		cin >> Good.good_ind;
 		cin.ignore();
 
-		cout << "Индекс типа: ";
+		cout << "Код типа: ";
 		cin >> Good.type_ind;
 		cin.ignore();
 
