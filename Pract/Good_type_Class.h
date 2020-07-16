@@ -125,6 +125,7 @@ public:
 		getline(cin, serchr);
 		cout << endl;
 
+		cout << "Информация по этому типу:" << endl;
 		RFFSearchG(serchr);
 		serchr = Got.type_ind;
 

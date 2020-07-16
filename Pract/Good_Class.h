@@ -51,7 +51,7 @@ public:
 				<< setw(25) << Good.package
 				<< setw(15) << Good.exp_date << endl;
 
-			cout << "Дополнительная информация:";
+			cout << "Дополнительная информация:\n";
 			gtC.RFFSearchG(Good.type_ind);
 		}
 		finE.close();

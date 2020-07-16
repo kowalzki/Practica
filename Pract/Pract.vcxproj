@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Dealer_Class.h" />
     <ClInclude Include="Good_Class.h" />
     <ClInclude Include="dealer.h" />
     <ClInclude Include="Employee.h" />

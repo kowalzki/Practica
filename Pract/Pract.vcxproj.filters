@@ -45,6 +45,9 @@
     <ClInclude Include="Good_type_Class.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Dealer_Class.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
