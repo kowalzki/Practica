@@ -113,11 +113,66 @@ public:
 
 	void RFFSearchD()
 	{
+		ifstream finE;
+		finE.open("C:\\Pract\\Dealer.txt", ios::in);
+		system("cls");
 		cout << "Введите наименование поставщика: ";
-		buffer = "";
+		string srch = "";
 		cin.ignore();
-		getline(cin, buffer);
+		getline(cin, srch);
+		DeleteLastSps(srch);
 
+		while (srch != Dlr.name)
+		{
+			ReadFromFileDC(&finE);
+			DeleteLastSps(Dlr.dealer_ind);
+			DeleteLastSps(Dlr.name);
+			DeleteLastSps(Dlr.dlr_adr.city);
+			DeleteLastSps(Dlr.dlr_adr.street_name);
+			DeleteLastSps(Dlr.dlr_adr.house);
+			DeleteLastSps(Dlr.dlr_adr.flat);
+			DeleteLastSps(Dlr.del_good1);
+			DeleteLastSps(Dlr.del_good2);
+			DeleteLastSps(Dlr.del_good3);
+
+			if (srch == Dlr.name)
+			{
+				cout << left
+					<< setw(15) << "Код поставщика"
+					<< setw(20) << "Название поставщика"
+					<< setw(15) << "Город"
+					<< setw(15) << "Улица"
+					<< setw(5)  << "Дом"
+					<< setw(6)  << "Офис"
+					<< setw(15) << "Код товара 1"
+					<< setw(15) << "Код товара 2"
+					<< setw(15) << "Код товара 3" << endl;
+
+				cout << left
+					<< setw(15) << Dlr.dealer_ind
+					<< setw(20) << Dlr.name
+					<< setw(15) << Dlr.dlr_adr.city
+					<< setw(15) << Dlr.dlr_adr.street_name
+					<< setw(4)  << Dlr.dlr_adr.house << '/'
+					<< setw(6)  << Dlr.dlr_adr.flat
+					<< setw(15) << Dlr.del_good1
+					<< setw(15) << Dlr.del_good2
+					<< setw(15) << Dlr.del_good3 << endl;
+
+				cout << "Дополнительная информация:\n";
+				cout << "Информация по товару с индексом 1" << endl;
+				goCl.RFFSearchG(Dlr.del_good1);
+				cout << "Информация по товару с индексом 2" << endl;
+				goCl.RFFSearchG(Dlr.del_good2);
+				cout << "Информация по товару с индексом 3" << endl;
+				goCl.RFFSearchG(Dlr.del_good3);
+			}
+			if (finE.peek() == EOF)
+			{
+				cout << "Nope" << endl;
+				break;
+			}
+		}
 	}
 
 	void AddToFileDC()

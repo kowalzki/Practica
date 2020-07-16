@@ -148,6 +148,7 @@
     <ClInclude Include="Good_type.h" />
     <ClInclude Include="Good_type_Class.h" />
     <ClInclude Include="Orderer.h" />
+    <ClInclude Include="Orderer_Class.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Storage.h" />
   </ItemGroup>

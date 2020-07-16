@@ -136,6 +136,10 @@ int main()
 				{
 					delCl.ShowD(); system("pause"); break;
 				}
+				else
+				{
+					delCl.RFFSearchD(); system("pause"); break;
+				}
 			}
 		}
 		default: cout << "Повторите ввод. " << endl; system("pause"); break;
