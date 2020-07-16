@@ -94,6 +94,7 @@ public:
 					<< setw(25) << Good.hold_condit
 					<< setw(25) << Good.package
 					<< setw(15) << Good.exp_date << endl;
+				break;
 			}
 			if (fin.peek() == EOF)
 				break;

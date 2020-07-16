@@ -184,6 +184,7 @@ public:
 					<< setw(10) << Posit.salary
 					<< setw(50) << Posit.responsibility
 					<< setw(50) << Posit.expectations << endl << endl;
+				break;
 			}
 			if (fin.peek() == EOF)
 				break;

@@ -109,6 +109,7 @@ public:
 					<< setw(25) << Got.name
 					<< setw(30) << Got.description
 					<< setw(25) << Got.features << endl << endl;
+				break;
 			}
 			if (fin.peek() == EOF)
 				break;

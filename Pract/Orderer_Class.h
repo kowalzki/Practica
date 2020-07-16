@@ -122,6 +122,7 @@ public:
 				goCl.RFFSearchG(Odr.del_good2);
 				cout << "Информация по товару с индексом 3" << endl;
 				goCl.RFFSearchG(Odr.del_good3);
+				break;
 			}
 			if (finE.peek() == EOF)
 			{

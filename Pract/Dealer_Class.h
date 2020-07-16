@@ -166,6 +166,7 @@ public:
 				goCl.RFFSearchG(Dlr.del_good2);
 				cout << "Информация по товару с индексом 3" << endl;
 				goCl.RFFSearchG(Dlr.del_good3);
+				break;
 			}
 			if (finE.peek() == EOF)
 			{
