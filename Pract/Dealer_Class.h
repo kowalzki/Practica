@@ -111,6 +111,15 @@ public:
 		}
 	}
 
+	void RFFSearchD()
+	{
+		cout << "¬ведите наименование поставщика: ";
+		buffer = "";
+		cin.ignore();
+		getline(cin, buffer);
+
+	}
+
 	void AddToFileDC()
 	{
 		ofstream fout;

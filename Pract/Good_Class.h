@@ -75,7 +75,7 @@ public:
 			DeleteLastSps(Good.package);
 			DeleteLastSps(Good.exp_date);
 
-			if (str == Good.type_ind)
+			if (str == Good.good_ind)
 			{
 				cout << left
 					<< setw(15) << "Код товара"
