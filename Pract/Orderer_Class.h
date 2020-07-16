@@ -16,7 +16,7 @@ public:
 	Good_Class goCl;
 	string buffer = "";
 
-	void ShowD()
+	void ShowO()
 	{
 		ifstream finE;
 		finE.open("C:\\Pract\\Orderer.txt", ios::in);

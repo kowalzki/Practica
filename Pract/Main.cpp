@@ -147,6 +147,19 @@ int main()
 					delCl.RFFSearchD(); system("pause"); break;
 				}
 			}
+			else
+			{
+				cout << "Вывести всех заказчиков или поиск по конкретному? (1/0): ";
+				cin >> flag2;
+				if (flag2)
+				{
+					ordCl.ShowO(); system("pause"); break;
+				}
+				else
+				{
+					ordCl.RFFSearchO(); system("pause"); break;
+				}
+			}
 		}
 		default: cout << "Повторите ввод. " << endl; system("pause"); break;
 		}
