@@ -6,6 +6,7 @@
 #include "Employee_Class.h"
 #include "Position_Class.h"
 #include "Good_Class.h"
+#include "Good_type_Class.h"
 using namespace std;
 
 int main()
@@ -21,6 +22,7 @@ int main()
 	position posit;
 	Position_Class posC;
 	Good_Class gdCl;
+	Good_Type_Class gotCl;
 	cout << "Приветствую вас в БД оптового склада :)" << endl;
 	Sleep(1000);
 
@@ -33,6 +35,7 @@ int main()
 		cout << "2: Добавить элемент" << endl;
 		cout << "3: Показать файл на экране" << endl;
 		cout << "4: Отдел кадров" << endl;
+		cout << "5: Список товаров" << endl;
 		cout << "0: Выйти" << endl;
 		cout << "Chk" << endl;
 		cout << "_____________________" << endl << endl;
@@ -49,6 +52,7 @@ int main()
 			cout << "1: Сотрудник" << endl;
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
+			cout << "4: Тип товара" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -57,6 +61,7 @@ int main()
 			case 1: emplC.AddToFileEC(); system("pause"); break;
 			case 2: posC.AddToFilePC(); system("pause"); break;
 			case 3: gdCl.AddToFileGC(); system("pause"); break;
+			case 4: gotCl.AddToFileGTC(); system("pause"); break;
 			}
 			break;
 		}
@@ -67,6 +72,7 @@ int main()
 			cout << "1: Сотрудник" << endl;
 			cout << "2: Должность" << endl;
 			cout << "3: Товар" << endl;
+			cout << "4: Тип товара" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -75,6 +81,7 @@ int main()
 			case 1: emplC.AddElemEC(); system("pause"); break;
 			case 2: posC.AddElemPC(); system("pause"); break;
 			case 3: gdCl.AddElemGC(); system("pause"); break;
+			case 4: gotCl.AddElemGTC(); system("pause"); break;
 			}
 			break;
 		}
@@ -94,6 +101,20 @@ int main()
 				posC.SearchEmp(); system("pause"); break;
 			}
 
+			break;
+		}
+		case 5:
+		{
+			cout << "Вывести все товары или поиск по типу? (1/0): ";
+			cin >> flag2;
+			if (flag2)
+			{
+				gdCl.ShowG(); system("pause"); break;
+			}
+			else
+			{
+				gotCl.SearchGds(); system("pause"); break;
+			}
 			break;
 		}
 		default: cout << "Повторите ввод. " << endl; system("pause"); break;

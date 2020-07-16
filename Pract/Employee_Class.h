@@ -172,6 +172,7 @@ public:
 
 	void ReadFromFileEC(ifstream* fin)
 	{
+		buffer = "";
 		for (int i = 0; i < 5; i++)
 			buffer += fin->get();
 		Employ.eploy_ind = buffer; buffer = "";

@@ -70,6 +70,7 @@ public:
 
 	void ReadFromFilePC(ifstream* fin)
 	{
+		buffer = "";
 		for (int i = 0; i < 5; i++)
 			buffer += fin->get();
 		Posit.position_ind = buffer; buffer = "";
@@ -150,6 +151,7 @@ public:
 					<< setw(10) << Employ.position_ind << endl;
 			}
 		}
+		finE.close();
 	}
 
 	void RFFSearch(string str)
