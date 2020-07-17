@@ -25,7 +25,7 @@ public:
 	void ShowS()
 	{
 		ifstream finS;
-		finS.open("C:\\Pract\\Dealer.txt", ios::in);
+		finS.open("C:\\Pract\\Storage.txt", ios::in);
 		system("cls");
 
 		while (finS.peek() != EOF)
@@ -53,7 +53,7 @@ public:
 			dataout += stor.out_date.day; dataout += '/'; dataout += stor.out_date.month; dataout += '/'; dataout += stor.out_date.year;
 
 			cout << left 
-				<< setw(25) << "Дата поступления товара" << endl
+				<< setw(25) << "Дата поступления товара"
 				<< setw(15) << "Дата заказа"
 				<< setw(15) << "Дата отправки"
 				<< setw(15) << "Kод товара"
@@ -257,6 +257,70 @@ public:
 		for (int i = 0; i <= 5; i++)
 			buffer += fin->get();
 		stor.eploy_ind = buffer; buffer = "";
+	}
+
+	void SearchDT()
+	{
+		ifstream finSD;
+		finSD.open("C:\\Pract\\Storage.txt", ios::in);
+		string src;
+		cout << "Введите искомый тип доставки: ";
+		cin.ignore();
+		getline(cin, src);
+		DeleteLastSps(src);
+		while (finSD.peek() != EOF)
+		{
+			ReadFromFileSC(&finSD);
+			DeleteLastSps(stor.in_date.day);
+			DeleteLastSps(stor.in_date.month);
+			DeleteLastSps(stor.in_date.year);
+			DeleteLastSps(stor.ord_date.day);
+			DeleteLastSps(stor.ord_date.month);
+			DeleteLastSps(stor.ord_date.year);
+			DeleteLastSps(stor.out_date.day);
+			DeleteLastSps(stor.out_date.month);
+			DeleteLastSps(stor.out_date.year);
+			DeleteLastSps(stor.good_ind);
+			DeleteLastSps(stor.dealer_ind);
+			DeleteLastSps(stor.orderer_ind);
+			DeleteLastSps(stor.delivery_type);
+			DeleteLastSps(stor.size);
+			DeleteLastSps(stor.price);
+			DeleteLastSps(stor.eploy_ind);
+			string  datain, dataord, dataout;
+			datain += stor.in_date.day; datain += '/'; datain += stor.in_date.month; datain += '/'; datain += stor.in_date.year;
+			dataord += stor.ord_date.day; dataord += '/'; dataord += stor.ord_date.month; dataord += '/'; dataord += stor.ord_date.year;
+			dataout += stor.out_date.day; dataout += '/'; dataout += stor.out_date.month; dataout += '/'; dataout += stor.out_date.year;
+
+			if (src == stor.delivery_type)
+			{
+				cout << left
+					<< setw(25) << "Дата поступления товара"
+					<< setw(15) << "Дата заказа"
+					<< setw(15) << "Дата отправки"
+					<< setw(15) << "Kод товара"
+					<< setw(16) << "Kод поставщика"
+					<< setw(15) << "Kод заказчика"
+					<< setw(15) << "Тип доставки"
+					<< setw(15) << "Объём заказа"
+					<< setw(7) << "Цена"
+					<< setw(15) << "Код сотрудника" << endl;
+
+				cout << left
+					<< setw(25) << datain
+					<< setw(15) << dataord
+					<< setw(15) << dataout
+					<< setw(15) << stor.good_ind
+					<< setw(16) << stor.dealer_ind
+					<< setw(15) << stor.orderer_ind
+					<< setw(15) << stor.delivery_type
+					<< setw(15) << stor.size
+					<< setw(7) << stor.price
+					<< setw(15) << stor.eploy_ind << endl;
+			}
+		}
+
+
 	}
 
 	void DeleteLastSps(string& str)

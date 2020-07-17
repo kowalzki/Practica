@@ -110,7 +110,9 @@ int main()
 
 		case 4:
 		{
-			cout << "Вывести всех сотрудников или поиск по должности? (1/0): ";
+			cout << "0: Вывести всех сотрудников" << endl;
+			cout << "1: Поиск по конкретной должности" << endl;
+			cout << "Ввод: ";
 			cin >> flag2;
 			if (flag2)
 			{
@@ -125,7 +127,9 @@ int main()
 		}
 		case 5:
 		{
-			cout << "Вывести все товары или поиск по типу? (1/0): ";
+			cout << "0: Вывести все товары" << endl;
+			cout << "1: Поиск по конкретному типу" << endl;
+			cout << "Ввод: ";
 			cin >> flag2;
 			if (flag2)
 			{
@@ -139,33 +143,44 @@ int main()
 		}
 		case 6:
 		{
-			cout << "По полю -Поставщики- или -Заказчики- ? (1/0): ";
-			cin >> flag2;
-			if (flag2)
+			cout << "1: Поставщики" << endl;
+			cout << "2: Заказчики" << endl;
+			cout << "3: Доставка (Склад)" << endl;
+			cout << "Ввод: ";
+			cin >> chs;
+			switch (chs)
 			{
-				cout << "Вывести всех поставщиков или поиск по конкретному? (1/0): ";
+			case 1:
+				{
+				cout << "0: Вывести всех поставщиков" << endl;
+				cout << "1: Поиск по конкретному поставщику" << endl;
+				cout << "Ввод: " << endl;
+					cin >> flag2;
+					if (flag2)
+					{
+						delCl.ShowD(); system("pause"); break;
+					}
+					else
+					{
+						delCl.RFFSearchD(); system("pause"); break;
+					}
+				}
+			case 2:
+				{
+				cout << "0: Вывести всех заказчиков" << endl;
+				cout << "1: Поиск по конкретному заказчику" << endl;
+				cout << "Ввод: ";
 				cin >> flag2;
-				if (flag2)
-				{
-					delCl.ShowD(); system("pause"); break;
+					if (flag2)
+					{
+						ordCl.ShowO(); system("pause"); break;
+					}
+					else
+					{
+						ordCl.RFFSearchO(); system("pause"); break;
+					}
 				}
-				else
-				{
-					delCl.RFFSearchD(); system("pause"); break;
-				}
-			}
-			else
-			{
-				cout << "Вывести всех заказчиков или поиск по конкретному? (1/0): ";
-				cin >> flag2;
-				if (flag2)
-				{
-					ordCl.ShowO(); system("pause"); break;
-				}
-				else
-				{
-					ordCl.RFFSearchO(); system("pause"); break;
-				}
+			case 3: strCl.SearchDT(); system("pause"); break;
 			}
 		}
 		default: cout << "Повторите ввод. " << endl; system("pause"); break;
