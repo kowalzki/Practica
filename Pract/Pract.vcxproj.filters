@@ -51,6 +51,9 @@
     <ClInclude Include="Orderer_Class.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Storage_Class.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

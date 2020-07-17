@@ -9,6 +9,7 @@
 #include "Good_type_Class.h"
 #include "Dealer_Class.h"
 #include "Orderer_Class.h"
+#include "Storage_Class.h"
 using namespace std;
 
 int main()
@@ -27,6 +28,7 @@ int main()
 	Good_Type_Class gotCl;
 	Dealer_Class delCl;
 	Orderer_Class ordCl;
+	Storage_Class strCl;
 	cout << "Приветствую вас в БД оптового склада :)" << endl;
 	Sleep(1000);
 
@@ -37,7 +39,7 @@ int main()
 		cout << "_____________________" << endl;
 		cout << "1: Сохранить в файл" << endl;
 		cout << "2: Добавить элемент" << endl;
-		cout << "3: Показать файл на экране" << endl;
+		cout << "3: Показать склад на экране" << endl;
 		cout << "4: Отдел кадров" << endl;
 		cout << "5: Список товаров" << endl;
 		cout << "6: Заказы" << endl;
@@ -60,6 +62,7 @@ int main()
 			cout << "4: Тип товара" << endl;
 			cout << "5: Поставщик" << endl;
 			cout << "6: Заказчик" << endl;
+			cout << "7: Склад" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -71,6 +74,7 @@ int main()
 			case 4: gotCl.AddToFileGTC(); system("pause"); break;
 			case 5: delCl.AddToFileDC(); system("pause"); break;
 			case 6: ordCl.AddToFileOC(); system("pause"); break;
+			case 7: strCl.AddToFileSC(); system("pause"); break;
 			}
 			break;
 		}
@@ -84,6 +88,8 @@ int main()
 			cout << "3: Товар" << endl;
 			cout << "4: Тип товара" << endl;
 			cout << "5: Поставщик" << endl;
+			cout << "6: Заказчик" << endl;
+			cout << "7: Склад" << endl;
 			cout << "_____________________" << endl << endl;
 			cout << "Выберите (__): ";
 			cin >> chs;
@@ -95,11 +101,12 @@ int main()
 			case 4: gotCl.AddElemGTC(); system("pause"); break;
 			case 5: delCl.AddElemGC(); system("pause"); break;
 			case 6: ordCl.AddElemOC(); system("pause"); break;
+			case 7: strCl.AddElemSC(); system("pause"); break;
 			}
 			break;
 		}
 
-		case 3: emplC.ShowE(); system("pause"); break;
+		case 3: strCl.ShowS(); system("pause"); break;
 
 		case 4:
 		{

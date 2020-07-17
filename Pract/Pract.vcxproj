@@ -151,6 +151,7 @@
     <ClInclude Include="Orderer_Class.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Storage.h" />
+    <ClInclude Include="Storage_Class.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Employee_Class.h" />

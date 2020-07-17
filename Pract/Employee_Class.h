@@ -170,6 +170,65 @@ public:
 		fout.close();
 	}
 
+	void RFFSearchE(string str)
+	{
+		ifstream finS;
+		finS.open("C:\\Pract\\Employee.txt", ios::in);
+		DeleteLastSps(str);
+
+		while (str != Employ.eploy_ind)
+		{
+			ReadFromFileEC(&finS);
+			DeleteLastSps(Employ.eploy_ind);
+			DeleteLastSps(Employ.fio.name);
+			DeleteLastSps(Employ.fio.sec_name);
+			DeleteLastSps(Employ.fio.surname);
+			DeleteLastSps(Employ.age);
+			DeleteLastSps(Employ.e_adress.city);
+			DeleteLastSps(Employ.e_adress.street_name);
+			DeleteLastSps(Employ.e_adress.house);
+			DeleteLastSps(Employ.e_adress.flat);
+			DeleteLastSps(Employ.sex);
+			DeleteLastSps(Employ.phone);
+			DeleteLastSps(Employ.passport);
+			DeleteLastSps(Employ.position_ind);
+
+			if (str == Employ.eploy_ind)
+			{
+				cout << left
+					<< setw(20) << "Номер сотрудника"
+					<< setw(36) << "ФИО"
+					<< setw(8) << "Возраст"
+					<< setw(5) << "Пол"
+					<< setw(39) << "Адрес"
+					<< setw(20) << "Телефон"
+					<< setw(15) << "Паспорт"
+					<< setw(10) << "Должность" << endl;
+
+				cout << left
+					<< setw(20) << Employ.eploy_ind
+					<< setw(12) << Employ.fio.name
+					<< setw(12) << Employ.fio.sec_name
+					<< setw(12) << Employ.fio.surname
+					<< setw(8) << Employ.age
+					<< setw(5) << Employ.sex
+					<< setw(15) << Employ.e_adress.city
+					<< setw(15) << Employ.e_adress.street_name
+					<< setw(4) << Employ.e_adress.house << '/'
+					<< setw(4) << Employ.e_adress.flat
+					<< setw(20) << Employ.phone
+					<< setw(15) << Employ.passport
+					<< setw(10) << Employ.position_ind << endl;
+				break;
+			}
+			if (finS.peek() == EOF)
+			{
+				cout << "Nope" << endl;
+				break;
+			}
+		}
+	}
+
 	void ReadFromFileEC(ifstream* fin)
 	{
 		buffer = "";

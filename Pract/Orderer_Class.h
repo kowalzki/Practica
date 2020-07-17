@@ -132,6 +132,58 @@ public:
 		}
 	}
 
+	void RFFSearchOS(string str)
+	{
+		ifstream finO;
+		finO.open("C:\\Pract\\Orderer.txt", ios::in);
+		DeleteLastSps(str);
+
+		while (str != Odr.orderer_ind)
+		{
+			ReadFromFileDC(&finO);
+			DeleteLastSps(Odr.orderer_ind);
+			DeleteLastSps(Odr.name);
+			DeleteLastSps(Odr.orer_adr.city);
+			DeleteLastSps(Odr.orer_adr.street_name);
+			DeleteLastSps(Odr.orer_adr.house);
+			DeleteLastSps(Odr.orer_adr.flat);
+			DeleteLastSps(Odr.del_good1);
+			DeleteLastSps(Odr.del_good2);
+			DeleteLastSps(Odr.del_good3);
+
+			if (str == Odr.orderer_ind)
+			{
+				cout << left
+					<< setw(15) << "Код заказчика"
+					<< setw(20) << "Название заказчика"
+					<< setw(15) << "Город"
+					<< setw(15) << "Улица"
+					<< setw(5) << "Дом"
+					<< setw(6) << "Офис"
+					<< setw(15) << "Код товара 1"
+					<< setw(15) << "Код товара 2"
+					<< setw(15) << "Код товара 3" << endl;
+
+				cout << left
+					<< setw(15) << Odr.orderer_ind
+					<< setw(20) << Odr.name
+					<< setw(15) << Odr.orer_adr.city
+					<< setw(15) << Odr.orer_adr.street_name
+					<< setw(5) << Odr.orer_adr.house << '/'
+					<< setw(6) << Odr.orer_adr.flat
+					<< setw(15) << Odr.del_good1
+					<< setw(15) << Odr.del_good2
+					<< setw(15) << Odr.del_good3 << endl;
+				break;
+			}
+			if (finO.peek() == EOF)
+			{
+				cout << "Nope" << endl;
+				break;
+			}
+		}
+	}
+
 	void AddElemOC()
 	{
 		SetConsoleCP(1251);
